@@ -1,1 +1,12 @@
 @import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", sans-serif;
+  --font-heading: "Young Serif", Georgia, serif;
+
+  --color-primary: #1a4009;
+  --color-secondary: #9ea694;
+  --color-detail: #565951;
+  --color-bg: #f2f2f2;
+  --color-text: #0d0d0d;
+}
