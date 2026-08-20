@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="Read the full story and discover the latest news and updates from the Student Express community."
+      content="Read the Student Express terms of use, including account responsibilities, article publishing guidelines and acceptable use."
     />
-    <title>Student Express | Article</title>
+    <title>Student Express | Terms</title>
     <script
       src="https://kit.fontawesome.com/bfed71705b.js"
       crossorigin="anonymous"
@@ -37,9 +37,8 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="/css/style.css" />
-    <script src="/scripts/pages/handleDetailPage.mjs" type="module"></script>
+    <script src="/scripts/pages/terms.mjs" type="module"></script>
   </head>
-
   <body class="grid min-h-screen grid-rows-[auto_1fr_auto] bg-bg">
     <header class="bg-secondary shadow-lg sticky top-0 z-50">
       <nav
@@ -124,7 +123,7 @@
 
           <div
             id="mobile-logged-in-nav"
-            class="hidden flex-col items-center gap-6 w-full"
+            class="flex flex-col items-center gap-6 w-full"
           >
             <a
               href="/articles/index.html"
@@ -153,9 +152,87 @@
         </div>
       </div>
     </header>
-    <main
-      class="container mx-auto flex flex-col items-center bg-bg justify-center pb-4 px-4"
-    ></main>
+    <main class="container mx-auto max-w-3xl bg-bg px-4 py-6">
+      <h1
+        class="font-heading mx-auto my-4 mb-3 rounded-lg p-2 text-center text-2xl font-bold text-primary md:text-4xl"
+      >
+        Our Terms
+      </h1>
+
+      <div class="rounded-2xl border border-detail/30 bg-white p-8 shadow-md">
+        <p class="mb-8 text-sm italic text-detail">Last Updated: August 2026</p>
+
+        <section class="space-y-8">
+          <div>
+            <h2 class="mb-2 text-xl font-semibold text-text">
+              1. Educational Project
+            </h2>
+            <p class="leading-relaxed text-text/80">
+              Student Express is a student project developed as part of the
+              Noroff Front-End Development program. The website is created for
+              educational purposes and uses Supabase to support authentication
+              and article management for a student news platform.
+            </p>
+          </div>
+
+          <div>
+            <h2 class="mb-2 text-xl font-semibold text-text">
+              2. User Accounts
+            </h2>
+            <p class="leading-relaxed text-text/80">
+              Some features of Student Express require users to create an
+              account and log in. Users are responsible for providing
+              appropriate account information and for keeping their login
+              details secure.
+            </p>
+          </div>
+
+          <div>
+            <h2 class="mb-2 text-xl font-semibold text-text">
+              3. Articles and Content
+            </h2>
+            <p class="leading-relaxed text-text/80">
+              Registered users may create and publish articles on Student
+              Express. Users are responsible for the content they submit and
+              should only publish text and images that they have permission to
+              use.
+            </p>
+          </div>
+
+          <div>
+            <h2 class="mb-2 text-xl font-semibold text-text">
+              4. Acceptable Use
+            </h2>
+            <p class="leading-relaxed text-text/80">
+              Users agree not to misuse the platform. This includes publishing
+              harmful or inappropriate content, attempting to access another
+              user's account, interfering with the functionality of the website,
+              or attempting to exploit the services used by Student Express.
+            </p>
+          </div>
+
+          <div>
+            <h2 class="mb-2 text-xl font-semibold text-text">
+              5. Changes to the Service
+            </h2>
+            <p class="leading-relaxed text-text/80">
+              Because Student Express is an educational project, features and
+              functionality may change during development. The website may also
+              be updated, changed or removed without notice.
+            </p>
+          </div>
+        </section>
+      </div>
+
+      <div class="mt-8 text-center">
+        <a
+          href="../index.html"
+          class="font-semibold text-primary transition hover:text-detail hover:underline"
+        >
+          ← Back to Home
+        </a>
+      </div>
+    </main>
     <footer class="bg-secondary p-4 shadow-inner">
       <div class="container mx-auto space-y-4 text-center">
         <a href="/index.html">
@@ -171,17 +248,17 @@
         >
           <a
             href="/about/index.html"
-            class="font-medium hover:text-detail active:text-detail hover:underline hover:decoration-detail underline-offset-4 transition-all text-primary"
+            class="hover:text-detail active:text-detail hover:underline hover:decoration-detail underline-offset-4 transition-all text-primary"
             >About</a
           >
           <a
             href="/terms/index.html"
-            class="font-medium hover:text-detail active:text-detail hover:underline hover:decoration-detail underline-offset-4 transition-all text-primary"
+            class="text-detail underline decoration-detail underline-offset-4"
             >Terms</a
           >
           <a
             href="/privacy/index.html"
-            class="hover:text-detail font-medium active:text-detail hover:underline hover:decoration-detail underline-offset-4 transition-all text-primary"
+            class="hover:text-detail active:text-detail hover:underline hover:decoration-detail underline-offset-4 transition-all text-primary"
             >Privacy</a
           >
         </div>

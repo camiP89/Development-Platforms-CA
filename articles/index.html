@@ -39,5 +39,283 @@
     <link rel="stylesheet" href="/css/style.css" />
     <script src="/scripts/pages/articleFeedPage.mjs" type="module"></script>
   </head>
-  <body></body>
+  <body class="grid min-h-screen grid-rows-[auto_1fr_auto] bg-bg">
+    <header class="bg-secondary shadow-lg sticky top-0 z-50">
+      <nav
+        class="container mx-auto px-4 py-2 flex items-center justify-between"
+      >
+        <a href="/index.html" class="shrink-0">
+          <img
+            src="/assets/dp-logo.png"
+            alt="Student Express logo"
+            class="h-8 md:h-10 w-auto"
+          />
+        </a>
+
+        <div
+          id="user-status-bar"
+          class="hidden flex-col items-start gap-1 sm:flex-row sm:items-center"
+        >
+          <p
+            id="welcome-text"
+            class="text-xs md:hidden lg:block lg:text-base font-medium italic text-primary"
+          ></p>
+        </div>
+
+        <div class="flex items-center gap-4">
+          <div class="hidden md:flex space-x-6 items-center">
+            <a
+              href="/index.html"
+              class="font-medium hover:text-detail active:text-detail hover:underline hover:decoration-detail underline-offset-4 transition-all text-primary"
+              >Home</a
+            >
+            <a
+              href="/about/index.html"
+              class="font-medium hover:text-detail active:text-detail hover:underline hover:decoration-detail underline-offset-4 transition-all text-primary"
+              >About</a
+            >
+
+            <div id="logged-in-nav" class="hidden items-center space-x-6">
+              <a
+                href="/articles/index.html"
+                class="font-semibold text-detail underline decoration-detail underline-offset-4"
+                >Articles</a
+              >
+
+              <button
+                id="logout-button"
+                class="bg-primary text-white px-6 py-1.5 rounded-lg text-sm font-semibold transition-colors duration-200 hover:bg-red-700 hover:text-white active:bg-red-800 focus:ring-2 focus:ring-red-700"
+              >
+                Log Out
+              </button>
+            </div>
+
+            <div id="logged-out-nav" class="flex items-center">
+              <a
+                href="/account/login.html"
+                class="bg-primary text-white px-6 py-1.5 rounded-lg text-sm font-semibold transition hover:bg-detail hover:text-text focus:ring-2 focus:ring-detail focus:outline-detail active:bg-detail disabled:opacity-50"
+                >Sign In</a
+              >
+            </div>
+          </div>
+
+          <button id="menu-btn" class="p-2 md:hidden block">
+            <i
+              class="fa-solid fa-bars text-2xl p-2 rounded-lg text-primary"
+            ></i>
+          </button>
+        </div>
+      </nav>
+
+      <div
+        id="mobile-menu"
+        class="hidden md:hidden absolute top-full left-0 w-full bg-bg shadow-lg py-8 z-50"
+      >
+        <div class="flex flex-col items-center font-sans gap-6">
+          <a
+            href="/index.html"
+            class="font-medium hover:text-detail active:text-detail hover:underline hover:decoration-detail underline-offset-4 transition-all text-primary"
+            >Home</a
+          >
+          <a
+            href="/about/index.html"
+            class="font-medium hover:text-detail active:text-detail hover:underline hover:decoration-detail underline-offset-4 transition-all text-primary"
+            >About</a
+          >
+
+          <div
+            id="mobile-logged-in-nav"
+            class="hidden flex-col items-center gap-6 w-full"
+          >
+            <a
+              href="/articles/index.html"
+              class="font-semibold text-detail underline decoration-detail underline-offset-4"
+              >Articles</a
+            >
+
+            <button
+              id="mobile-logout-button"
+              class="bg-primary text-white px-8 py-2 rounded-lg transition hover:bg-red-700 hover:text-white focus:ring-2 focus:ring-red-700 focus:outline-none active:bg-red-800 disabled:opacity-50"
+            >
+              Log Out
+            </button>
+          </div>
+
+          <div
+            id="mobile-logged-out-nav"
+            class="flex flex-col items-center gap-6 w-full"
+          >
+            <a
+              href="/account/login.html"
+              class="text-base bg-primary text-white px-8 py-2 rounded-lg transition hover:bg-detail hover:text-text focus:ring-2 focus:ring-detail focus:outline-detail active:bg-detail disabled:opacity-50"
+              >Sign In</a
+            >
+          </div>
+        </div>
+      </div>
+    </header>
+    <main class="bg-bg">
+      <div class="container mx-auto px-4 max-w-7xl">
+        <h1
+          class="font-heading mx-auto mb-3 rounded-lg p-2 text-center text-2xl md:text-4xl my-4 font-bold text-primary"
+        >
+          Loading...
+        </h1>
+        <div
+          class="mb-6 flex flex-row gap-4 md:flex-row md:items-center md:justify-between"
+        >
+          <!-- search bar -->
+          <div class="relative w-full md:w-1/2 bg-white rounded-lg">
+            <input
+              type="text"
+              id="search-input"
+              placeholder="Search articles..."
+              class="w-full rounded-lg border-2 py-2 pr-4 pl-10 text-text/80 border-detail/30 text-xs md:text-sm focus:ring-2 focus:ring-detail focus:outline-none"
+            />
+            <i
+              class="fa-solid fa-magnifying-glass absolute top-1/2 left-3 -translate-y-1/2 text-text/80"
+            ></i>
+          </div>
+
+          <!-- Sort -->
+          <select
+            id="sort-dropdown"
+            class="rounded-lg border-2 border-detail/30 text-xs md:text-sm text-text/80 bg-white px-4 py-2 focus:ring-2 focus:ring-detail focus:outline-none"
+          >
+            <option value="newest">Sort by Newest</option>
+            <option value="oldest">Oldest</option>
+          </select>
+        </div>
+
+        <!-- Article card template -->
+        <template id="article-card-template">
+          <article
+            class="group relative overflow-hidden rounded-2xl border border-detail/30 bg-white shadow-lg flex flex-col h-full"
+          >
+            <div class="relative h-60 w-full overflow-hidden">
+              <div
+                class="js-image h-full bg-cover bg-center transition-transform duration-500 group-hover:scale-105"
+              ></div>
+            </div>
+
+            <div class="p-4 flex flex-col grow">
+              <h2
+                class="js-title font-heading text-xl line-clamp-2 font-semibold text-primary"
+              >
+                Article Title
+              </h2>
+
+              <div class="flex flex-col gap-1 mt-2">
+                <div class="flex items-center gap-1.5">
+                  <span class="text-sm font-medium text-text">By:</span>
+                  <span class="js-author text-sm font-medium text-detail">
+                    Author Name
+                  </span>
+                </div>
+
+                <div class="flex items-center gap-1.5">
+                  <span class="text-sm font-medium text-text">Published:</span>
+                  <span class="js-date text-sm font-medium text-detail">
+                    Aug 20, 2026
+                  </span>
+                </div>
+              </div>
+
+              <p
+                class="js-description mt-3 line-clamp-3 font-sans text-sm text-text grow"
+              >
+                Article description goes here.
+              </p>
+
+              <div class="mt-4 pt-3 border-t border-detail/30">
+                <a
+                  href="/articles/article-detail.html"
+                  class="js-link bg-primary text-white px-6 py-2 rounded-lg text-sm font-semibold text-center hover:bg-detail hover:text-text transition inline-block w-full"
+                >
+                  Read Article
+                </a>
+              </div>
+            </div>
+          </article>
+        </template>
+
+        <div
+          id="articles-container"
+          class="grid grid-cols-1 gap-3 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5"
+        ></div>
+
+        <div class="load-more-container flex justify-center">
+          <button
+            id="load-more-button"
+            class="button my-5 font-heading text-lg md:text-2xl w-full rounded-lg py-2 font-semibold text-text bg-detail shadow-md hover:bg-primary hover:text-white focus:ring-2 focus:ring-primary focus:outline-primary active:bg-primary transition-colors"
+            style="display: none"
+          >
+            Load More
+          </button>
+        </div>
+      </div>
+    </main>
+
+    <footer class="bg-secondary p-4 shadow-inner">
+      <div class="container mx-auto space-y-4 text-center">
+        <a href="/index.html">
+          <img
+            src="/assets/dp-logo.png"
+            alt="Student Express logo"
+            class="m-auto h-auto w-28 pb-4 hover:opacity-80 transition-opacity"
+          />
+        </a>
+
+        <div
+          class="flex justify-center font-medium font-sans text-xs sm:text-sm space-x-6"
+        >
+          <a
+            href="/about/index.html"
+            class="hover:text-detail active:text-detail hover:underline hover:decoration-detail underline-offset-4 transition-all text-primary"
+            >About</a
+          >
+          <a
+            href="/terms/index.html"
+            class="hover:text-detail active:text-detail hover:underline hover:decoration-detail underline-offset-4 transition-all text-primary"
+            >Terms</a
+          >
+          <a
+            href="/privacy/index.html"
+            class="hover:text-detail active:text-detail hover:underline hover:decoration-detail underline-offset-4 transition-all text-primary"
+            >Privacy</a
+          >
+        </div>
+        <div class="flex justify-center space-x-5 text-xl text-primary">
+          <a href="https://www.facebook.com" aria-label="Link to Facebook">
+            <i
+              class="fa-brands fa-square-facebook hover:text-detail active:text-detail hover:underline hover:decoration-detail underline-offset-4 transition-all"
+            ></i>
+          </a>
+          <a href="https://www.instagram.com" aria-label="Link to Instagram">
+            <i
+              class="fa-brands fa-square-instagram hover:text-detail active:text-detail hover:underline hover:decoration-detail underline-offset-4 transition-all"
+            ></i>
+          </a>
+          <a href="https://www.youtube.com" aria-label="Link to YouTube">
+            <i
+              class="fa-brands fa-square-youtube hover:text-detail active:text-detail hover:underline hover:decoration-detail underline-offset-4 transition-all"
+            ></i>
+          </a>
+          <a href="https://www.tiktok.com" aria-label="Link to TikTok">
+            <i
+              class="fa-brands fa-tiktok hover:text-detail active:text-detail hover:underline hover:decoration-detail underline-offset-4 transition-all"
+            ></i>
+          </a>
+          <a href="https://x.com" aria-label="Link to x (formerly Twitter)">
+            <i
+              class="fa-brands fa-square-x-twitter hover:text-detail active:text-detail hover:underline hover:decoration-detail underline-offset-4 transition-all"
+            ></i>
+          </a>
+        </div>
+        <p class="text-sm text-primary">
+          Copyright &copy; StudentExpressLtd 2026
+        </p>
+      </div>
+    </footer>
+  </body>
 </html>

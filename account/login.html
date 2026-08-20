@@ -39,5 +39,251 @@
     <link rel="stylesheet" href="/css/style.css" />
     <script src="/scripts/pages/login.mjs" type="module"></script>
   </head>
-  <body></body>
+  <body class="grid min-h-screen grid-rows-[auto_1fr_auto] bg-bg">
+    <header class="bg-secondary shadow-lg sticky top-0 z-50">
+      <nav
+        class="container mx-auto px-4 py-2 flex items-center justify-between"
+      >
+        <a href="/index.html" class="shrink-0">
+          <img
+            src="/assets/dp-logo.png"
+            alt="Student Express logo"
+            class="h-8 md:h-10 w-auto"
+          />
+        </a>
+
+        <div
+          id="user-status-bar"
+          class="hidden flex-col items-start gap-1 sm:flex-row sm:items-center"
+        >
+          <p
+            id="welcome-text"
+            class="text-xs md:hidden lg:block lg:text-base font-medium italic text-primary"
+          ></p>
+        </div>
+
+        <div class="flex items-center gap-4">
+          <div class="hidden md:flex space-x-6 items-center">
+            <a
+              href="/index.html"
+              class="font-medium hover:text-detail active:text-detail hover:underline hover:decoration-detail underline-offset-4 transition-all text-primary"
+              >Home</a
+            >
+            <a
+              href="/about/index.html"
+              class="font-medium hover:text-detail active:text-detail hover:underline hover:decoration-detail underline-offset-4 transition-all text-primary"
+              >About</a
+            >
+
+            <div id="logged-in-nav" class="hidden items-center space-x-6">
+              <a
+                href="/articles/index.html"
+                class="font-medium hover:text-detail active:text-detail hover:underline hover:decoration-detail underline-offset-4 transition-all text-primary"
+                >Articles</a
+              >
+
+              <button
+                id="logout-button"
+                class="bg-primary text-white px-6 py-1.5 rounded-lg text-sm font-semibold transition-colors duration-200 hover:bg-red-700 hover:text-white active:bg-red-800 focus:ring-2 focus:ring-red-700"
+              >
+                Log Out
+              </button>
+            </div>
+
+            <div id="logged-out-nav" class="flex items-center">
+              <a
+                href="/account/login.html"
+                class="bg-primary text-white px-6 py-1.5 rounded-lg text-sm font-semibold transition hover:bg-detail hover:text-text focus:ring-2 focus:ring-detail focus:outline-detail active:bg-detail disabled:opacity-50"
+                >Sign In</a
+              >
+            </div>
+          </div>
+
+          <button id="menu-btn" class="p-2 md:hidden block">
+            <i class="fa-solid fa-bars text-2xl text-primary"></i>
+          </button>
+        </div>
+      </nav>
+
+      <div
+        id="mobile-menu"
+        class="hidden md:hidden absolute top-full left-0 w-full bg-bg shadow-lg py-8 z-50"
+      >
+        <div class="flex flex-col items-center font-sans gap-6">
+          <a
+            href="/index.html"
+            class="font-medium hover:text-detail active:text-detail hover:underline hover:decoration-detail underline-offset-4 transition-all text-primary"
+            >Home</a
+          >
+          <a
+            href="/about/index.html"
+            class="font-medium hover:text-detail active:text-detail hover:underline hover:decoration-detail underline-offset-4 transition-all text-primary"
+            >About</a
+          >
+
+          <div
+            id="mobile-logged-in-nav"
+            class="hidden flex-col items-center gap-6 w-full"
+          >
+            <a
+              href="/articles/index.html"
+              class="font-medium hover:text-detail active:text-detail hover:underline hover:decoration-detail underline-offset-4 transition-all text-primary"
+              >Articles</a
+            >
+
+            <button
+              id="mobile-logout-button"
+              class="bg-primary text-white px-8 py-2 rounded-lg transition hover:bg-red-700 hover:text-white focus:ring-2 focus:ring-red-700 focus:outline-none active:bg-red-800 disabled:opacity-50"
+            >
+              Log Out
+            </button>
+          </div>
+
+          <div
+            id="mobile-logged-out-nav"
+            class="flex flex-col items-center gap-6 w-full"
+          >
+            <a
+              href="/account/login.html"
+              class="text-base bg-primary text-white px-8 py-2 rounded-lg transition hover:bg-detail hover:text-text focus:ring-2 focus:ring-detail focus:outline-detail active:bg-detail disabled:opacity-50"
+              >Sign In</a
+            >
+          </div>
+        </div>
+      </div>
+    </header>
+    <main
+      class="container mx-auto flex flex-col bg-bg items-center justify-center px-4 py-12"
+    >
+      <h1
+        class="mb-8 text-center font-sans text-lg sm:text-xl md:text-2xl tracking-wide font-bold text-text"
+      >
+        Welcome to the
+        <span
+          class="block text-primary font-heading text-2xl sm:text-3xl md:text-4xl font-extrabold"
+        >
+          Student Express
+        </span>
+      </h1>
+      <div class="w-full max-w-md rounded-2xl bg-white p-8 shadow-lg">
+        <form id="form-container" class="space-y-5">
+          <div>
+            <label
+              class="mb-1 block text-sm font-semibold text-text/80"
+              for="username"
+              >Student Email</label
+            >
+            <div
+              class="flex items-center overflow-hidden rounded-lg border border-detail/30 focus-within:ring-2 focus-within:ring-detail"
+            >
+              <input
+                class="w-full bg-transparent px-4 py-2 text-base focus:outline-none"
+                type="text"
+                id="username"
+                name="username"
+                placeholder="Username"
+                required
+              />
+              <span
+                class="bg-text/20 px-5 py-2 text-base font-medium text-text border-l border-detail/30 select-none"
+                >@stud.noroff.no</span
+              >
+            </div>
+          </div>
+          <div>
+            <label
+              class="mb-1 block text-sm font-semibold text-text/80"
+              for="password"
+              >Password</label
+            >
+            <input
+              class="w-full rounded-lg border border-detail/30 px-4 py-2 text-base focus:ring-2 focus:ring-detail focus:outline-none"
+              type="password"
+              id="password"
+              name="password"
+              placeholder="Enter password"
+              required
+            />
+          </div>
+          <button
+            class="text-base w-full rounded-lg py-2 font-semibold text-white bg-primary shadow-md transition hover:bg-detail hover:text-text focus:ring-2 focus:ring-detail focus:outline-detail active:bg-detail disabled:opacity-50"
+            type="submit"
+            name="action"
+          >
+            Log In
+          </button>
+        </form>
+        <p class="mt-6 text-center text-xs text-text/70">
+          Don't have an account?
+          <a
+            href="/account/register.html"
+            class="font-bold text-detail hover:underline"
+            >Register here</a
+          >
+        </p>
+      </div>
+    </main>
+
+    <footer class="bg-secondary p-4 shadow-inner">
+      <div class="container mx-auto space-y-4 text-center">
+        <a href="/index.html">
+          <img
+            src="/assets/dp-logo.png"
+            alt="Student Express logo"
+            class="m-auto h-auto w-28 pb-4 hover:opacity-80 transition-opacity"
+          />
+        </a>
+
+        <div
+          class="flex justify-center font-medium font-sans text-xs sm:text-sm space-x-6"
+        >
+          <a
+            href="/about/index.html"
+            class="font-medium hover:text-detail active:text-detail hover:underline hover:decoration-detail underline-offset-4 transition-all text-primary"
+            >About</a
+          >
+          <a
+            href="/terms/index.html"
+            class="font-medium hover:text-detail active:text-detail hover:underline hover:decoration-detail underline-offset-4 transition-all text-primary"
+            >Terms</a
+          >
+          <a
+            href="/privacy/index.html"
+            class="hover:text-detail font-medium active:text-detail hover:underline hover:decoration-detail underline-offset-4 transition-all text-primary"
+            >Privacy</a
+          >
+        </div>
+        <div class="flex justify-center space-x-5 text-xl text-primary">
+          <a href="https://www.facebook.com" aria-label="Link to Facebook">
+            <i
+              class="fa-brands fa-square-facebook hover:text-detail active:text-detail hover:underline hover:decoration-detail underline-offset-4 transition-all"
+            ></i>
+          </a>
+          <a href="https://www.instagram.com" aria-label="Link to Instagram">
+            <i
+              class="fa-brands fa-square-instagram hover:text-detail active:text-detail hover:underline hover:decoration-detail underline-offset-4 transition-all"
+            ></i>
+          </a>
+          <a href="https://www.youtube.com" aria-label="Link to YouTube">
+            <i
+              class="fa-brands fa-square-youtube hover:text-detail active:text-detail hover:underline hover:decoration-detail underline-offset-4 transition-all"
+            ></i>
+          </a>
+          <a href="https://www.tiktok.com" aria-label="Link to TikTok">
+            <i
+              class="fa-brands fa-tiktok hover:text-detail active:text-detail hover:underline hover:decoration-detail underline-offset-4 transition-all"
+            ></i>
+          </a>
+          <a href="https://x.com" aria-label="Link to x (formerly Twitter)">
+            <i
+              class="fa-brands fa-square-x-twitter hover:text-detail active:text-detail hover:underline hover:decoration-detail underline-offset-4 transition-all"
+            ></i>
+          </a>
+        </div>
+        <p class="text-sm text-primary">
+          Copyright &copy; StudentExpressLtd 2026
+        </p>
+      </div>
+    </footer>
+  </body>
 </html>

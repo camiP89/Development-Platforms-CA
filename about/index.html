@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="Read the full story and discover the latest news and updates from the Student Express community."
+      content="Learn more about Student Express, a student news platform for sharing campus stories, events and updates."
     />
-    <title>Student Express | Article</title>
+    <title>Student Express | About</title>
     <script
       src="https://kit.fontawesome.com/bfed71705b.js"
       crossorigin="anonymous"
@@ -37,7 +37,7 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="/css/style.css" />
-    <script src="/scripts/pages/handleDetailPage.mjs" type="module"></script>
+    <script src="/scripts/pages/about.mjs" type="module"></script>
   </head>
 
   <body class="grid min-h-screen grid-rows-[auto_1fr_auto] bg-bg">
@@ -72,7 +72,7 @@
             >
             <a
               href="/about/index.html"
-              class="font-medium hover:text-detail active:text-detail hover:underline hover:decoration-detail underline-offset-4 transition-all text-primary"
+              class="font-semibold text-detail underline decoration-detail underline-offset-4"
               >About</a
             >
 
@@ -108,7 +108,7 @@
 
       <div
         id="mobile-menu"
-        class="hidden md:hidden absolute top-full left-0 w-full bg-bg shadow-lg py-8 z-50"
+        class="hidden md:hidden absolute top-full left-0 w-full bg-off-white shadow-lg py-8 z-50"
       >
         <div class="flex flex-col items-center font-sans gap-6">
           <a
@@ -118,13 +118,13 @@
           >
           <a
             href="/about/index.html"
-            class="font-medium hover:text-detail active:text-detail hover:underline hover:decoration-detail underline-offset-4 transition-all text-primary"
+            class="font-semibold text-detail underline decoration-detail underline-offset-4"
             >About</a
           >
 
           <div
             id="mobile-logged-in-nav"
-            class="hidden flex-col items-center gap-6 w-full"
+            class="flex flex-col items-center gap-6 w-full"
           >
             <a
               href="/articles/index.html"
@@ -146,16 +146,60 @@
           >
             <a
               href="/account/login.html"
-              class="text-base bg-primary text-white px-8 py-2 rounded-lg transition hover:bg-detail hover:text-text focus:ring-2 focus:ring-detail focus:outline-detail active:bg-detail disabled:opacity-50"
+              class="text-md bg-primary text-white px-8 py-2 rounded-lg transition hover:bg-detail hover:text-text focus:ring-2 focus:ring-detail focus:outline-detail active:bg-detail disabled:opacity-50"
               >Sign In</a
             >
           </div>
         </div>
       </div>
     </header>
-    <main
-      class="container mx-auto flex flex-col items-center bg-bg justify-center pb-4 px-4"
-    ></main>
+    <main class="container mx-auto max-w-3xl bg-bg px-4 pb-4">
+      <h1
+        class="font-heading mx-auto my-4 mb-3 rounded-lg p-2 text-center text-2xl font-bold text-primary md:text-4xl"
+      >
+        About Us
+      </h1>
+
+      <div class="rounded-2xl border border-detail/30 bg-white p-8 shadow-md">
+        <article class="space-y-8">
+          <div>
+            <p class="leading-relaxed text-text/80">
+              Student Express is a student news platform created to share
+              stories, updates and events from the student community. The aim is
+              to provide one place where students can discover what is happening
+              and stay connected with campus life.
+            </p>
+          </div>
+
+          <div>
+            <p class="leading-relaxed text-text/80">
+              The platform includes articles covering topics such as student
+              life, campus events, study-related news and community activities.
+              Registered users can also contribute by creating and publishing
+              their own articles.
+            </p>
+          </div>
+
+          <div>
+            <p class="leading-relaxed text-text/80">
+              Student Express was developed as part of the Development Platforms
+              course at Noroff. The project demonstrates a front-end application
+              using HTML, Tailwind CSS and JavaScript together with Supabase for
+              authentication and database functionality.
+            </p>
+          </div>
+        </article>
+      </div>
+
+      <div class="mt-8 text-center">
+        <a
+          href="../index.html"
+          class="inline-block font-semibold text-primary transition hover:text-detail hover:underline"
+        >
+          ← Back to Home
+        </a>
+      </div>
+    </main>
     <footer class="bg-secondary p-4 shadow-inner">
       <div class="container mx-auto space-y-4 text-center">
         <a href="/index.html">
@@ -171,17 +215,17 @@
         >
           <a
             href="/about/index.html"
-            class="font-medium hover:text-detail active:text-detail hover:underline hover:decoration-detail underline-offset-4 transition-all text-primary"
+            class="text-detail underline decoration-detail underline-offset-4"
             >About</a
           >
           <a
             href="/terms/index.html"
-            class="font-medium hover:text-detail active:text-detail hover:underline hover:decoration-detail underline-offset-4 transition-all text-primary"
+            class="hover:text-detail active:text-detail hover:underline hover:decoration-detail underline-offset-4 transition-all text-primary"
             >Terms</a
           >
           <a
             href="/privacy/index.html"
-            class="hover:text-detail font-medium active:text-detail hover:underline hover:decoration-detail underline-offset-4 transition-all text-primary"
+            class="hover:text-detail active:text-detail hover:underline hover:decoration-detail underline-offset-4 transition-all text-primary"
             >Privacy</a
           >
         </div>
