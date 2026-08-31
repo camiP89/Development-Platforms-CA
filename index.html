@@ -155,7 +155,7 @@
         </div>
       </div>
     </header>
-    <main class="bg-bg">
+    <main class="bg-bg pb-4">
       <div
         id="hero-banner"
         class="w-full bg-primary/20 p-8 flex flex-col items-center justify-center space-y-4"
@@ -190,8 +190,55 @@
         <h1
           class="font-heading mx-auto mb-3 rounded-lg p-2 text-center text-2xl md:text-4xl my-4 font-bold text-primary"
         >
-          Loading...
+          Latest Stories
         </h1>
+        <!-- Featured latest article -->
+        <section
+          id="featured-article"
+          class="mb-10 overflow-hidden rounded-2xl border border-detail/30 bg-white shadow-lg"
+        >
+          <div class="grid md:grid-cols-2">
+            <!-- Featured image -->
+            <div
+              id="featured-image"
+              class="min-h-72 bg-cover bg-center md:min-h-96"
+            ></div>
+
+            <!-- Featured content -->
+            <div class="flex flex-col justify-center p-6 md:p-10">
+              <span
+                class="mb-2 text-xs font-bold uppercase tracking-widest text-detail"
+              >
+                Latest Story
+              </span>
+
+              <h2
+                id="featured-title"
+                class="font-heading text-2xl font-bold text-primary md:text-4xl"
+              >
+                Latest article
+              </h2>
+
+              <div class="mt-3 text-sm text-text/60">
+                <span id="featured-date"></span>
+              </div>
+
+              <p
+                id="featured-description"
+                class="mt-5 line-clamp-4 font-sans text-sm leading-6 text-text md:text-base"
+              ></p>
+
+              <a
+                id="featured-link"
+                href="#"
+                class="mt-6 inline-block self-start rounded-lg bg-primary px-6 py-2.5 text-sm font-semibold text-white transition hover:bg-detail hover:text-text"
+              >
+                Read Full Story
+              </a>
+            </div>
+          </div>
+        </section>
+
         <div
           class="mb-6 flex flex-row gap-4 md:flex-row md:items-center md:justify-between"
         >
@@ -239,13 +286,6 @@
 
               <div class="flex flex-col gap-1 mt-2">
                 <div class="flex items-center gap-1.5">
-                  <span class="text-sm font-medium text-text">By:</span>
-                  <span class="js-author text-sm font-medium text-detail">
-                    Author Name
-                  </span>
-                </div>
-
-                <div class="flex items-center gap-1.5">
                   <span class="text-sm font-medium text-text">Published:</span>
                   <span class="js-date text-sm font-medium text-detail">
                     Aug 20, 2026
@@ -279,7 +319,7 @@
         <div class="load-more-container flex justify-center">
           <button
             id="load-more-button"
-            class="button my-5 font-heading text-lg md:text-2xl w-full rounded-lg py-2 font-semibold text-text bg-detail shadow-md hover:bg-primary hover:text-white focus:ring-2 focus:ring-primary focus:outline-primary active:bg-primary transition-colors"
+            class="button my-5 font-heading text-lg md:text-2xl w-full rounded-lg py-2 font-semibold text-bg bg-detail shadow-md hover:bg-primary hover:text-white focus:ring-2 focus:ring-primary focus:outline-primary active:bg-primary transition-colors"
             style="display: none"
           >
             Load More
