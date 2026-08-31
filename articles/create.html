@@ -163,6 +163,7 @@
       </h1>
       <div class="w-full max-w-md rounded-2xl bg-white p-8 shadow-lg">
         <form id="create-article-container" class="space-y-5">
+          <div id="message-container" role="status" aria-live="polite"></div>
           <div>
             <label
               for="article-title"
@@ -180,16 +181,16 @@
 
           <div>
             <label
-              for="article-description"
+              for="article-content"
               class="mb-1 block text-sm font-semibold text-text/80"
             >
-              Article Description
+              Article Content
             </label>
 
             <textarea
               class="mb-1 w-full font-sans text-base text-text rounded-lg border border-detail/30 px-4 py-2 focus:ring-2 focus:ring-detail focus:outline-none"
-              id="article-description"
-              placeholder="Enter article description"
+              id="article-content"
+              placeholder="Enter article content"
               required
             ></textarea>
           </div>
