@@ -1,0 +1,369 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <meta
+      name="description"
+      content="View, edit and manage your published Student Express articles."
+    />
+
+    <title>Student Express | My Articles</title>
+
+    <script
+      src="https://kit.fontawesome.com/bfed71705b.js"
+      crossorigin="anonymous"
+    ></script>
+
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="/assets/apple-touch-icon.png"
+    />
+
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="/assets/favicon-32x32.png"
+    />
+
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="/assets/favicon-16x16.png"
+    />
+
+    <link rel="manifest" href="/assets/site.webmanifest" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Young+Serif&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="/css/style.css" />
+
+    <script src="/scripts/pages/myArticles.mjs" type="module"></script>
+  </head>
+
+  <body class="grid min-h-screen grid-rows-[auto_1fr_auto] bg-bg">
+    <header class="sticky top-0 z-50 bg-secondary shadow-lg">
+      <nav
+        class="container mx-auto flex items-center justify-between px-4 py-2"
+      >
+        <a href="/index.html" class="shrink-0">
+          <img
+            src="/assets/dp-logo.png"
+            alt="Student Express logo"
+            class="h-8 w-auto md:h-10"
+          />
+        </a>
+
+        <div
+          id="user-status-bar"
+          class="hidden flex-col items-start gap-1 sm:flex-row sm:items-center"
+        >
+          <p
+            id="welcome-text"
+            class="text-xs font-medium italic text-primary md:hidden lg:block lg:text-base"
+          ></p>
+        </div>
+
+        <div class="flex items-center gap-4">
+          <div class="hidden items-center space-x-6 md:flex">
+            <a
+              href="/index.html"
+              class="font-medium text-primary transition-all hover:text-detail hover:underline hover:decoration-detail active:text-detail"
+            >
+              Home
+            </a>
+
+            <a
+              href="/about/index.html"
+              class="font-medium text-primary transition-all hover:text-detail hover:underline hover:decoration-detail active:text-detail"
+            >
+              About
+            </a>
+
+            <div id="logged-in-nav" class="hidden items-center space-x-6">
+              <a
+                href="/articles/index.html"
+                class="font-medium text-primary transition-all hover:text-detail hover:underline hover:decoration-detail active:text-detail"
+              >
+                Articles
+              </a>
+
+              <button
+                id="logout-button"
+                class="rounded-lg bg-primary px-6 py-1.5 text-sm font-semibold text-white transition-colors duration-200 hover:bg-red-700 focus:ring-2 focus:ring-red-700 active:bg-red-800"
+              >
+                Log Out
+              </button>
+            </div>
+
+            <div id="logged-out-nav" class="flex items-center">
+              <a
+                href="/account/login.html"
+                class="rounded-lg bg-primary px-6 py-1.5 text-sm font-semibold text-white transition hover:bg-detail hover:text-text focus:ring-2 focus:ring-detail focus:outline-detail active:bg-detail disabled:opacity-50"
+              >
+                Sign In
+              </a>
+            </div>
+          </div>
+
+          <button id="menu-btn" class="block p-2 md:hidden">
+            <i class="fa-solid fa-bars text-2xl text-primary"></i>
+          </button>
+        </div>
+      </nav>
+
+      <div
+        id="mobile-menu"
+        class="absolute top-full left-0 z-50 hidden w-full bg-bg py-8 shadow-lg md:hidden"
+      >
+        <div class="flex flex-col items-center gap-6 font-sans">
+          <a
+            href="/index.html"
+            class="font-medium text-primary transition-all hover:text-detail hover:underline hover:decoration-detail active:text-detail"
+          >
+            Home
+          </a>
+
+          <a
+            href="/about/index.html"
+            class="font-medium text-primary transition-all hover:text-detail hover:underline hover:decoration-detail active:text-detail"
+          >
+            About
+          </a>
+
+          <div
+            id="mobile-logged-in-nav"
+            class="hidden w-full flex-col items-center gap-6"
+          >
+            <a
+              href="/articles/index.html"
+              class="font-medium text-primary transition-all hover:text-detail hover:underline hover:decoration-detail active:text-detail"
+            >
+              Articles
+            </a>
+
+            <button
+              id="mobile-logout-button"
+              class="rounded-lg bg-primary px-8 py-2 text-white transition hover:bg-red-700 focus:ring-2 focus:ring-red-700 focus:outline-none active:bg-red-800 disabled:opacity-50"
+            >
+              Log Out
+            </button>
+          </div>
+
+          <div
+            id="mobile-logged-out-nav"
+            class="flex w-full flex-col items-center gap-6"
+          >
+            <a
+              href="/account/login.html"
+              class="rounded-lg bg-primary px-8 py-2 text-base text-white transition hover:bg-detail hover:text-text focus:ring-2 focus:ring-detail focus:outline-detail active:bg-detail disabled:opacity-50"
+            >
+              Sign In
+            </a>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main class="bg-bg">
+      <div class="container mx-auto max-w-7xl px-4 py-4">
+        <h1
+          class="font-heading mx-auto mb-3 rounded-lg p-2 text-center text-2xl md:text-4xl my-4 font-bold text-primary"
+        >
+          My Articles
+        </h1>
+
+        <p class="mb-6 text-center text-sm text-text/70 md:text-base">
+          View, edit and manage the articles you have published on Student
+          Express.
+        </p>
+
+        <div class="mb-6 flex justify-end">
+          <a
+            href="/articles/create.html"
+            class="inline-flex items-center gap-2 rounded-xl bg-primary px-5 py-2.5 text-sm font-semibold text-white shadow-md transition hover:-translate-y-0.5 hover:bg-detail hover:text-text hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-detail active:translate-y-0"
+          >
+            <i class="fa-solid fa-plus"></i>
+            Create Article
+          </a>
+        </div>
+
+        <div
+          id="message-container"
+          role="status"
+          aria-live="polite"
+          class="mb-4"
+        ></div>
+
+        <template id="my-article-card-template">
+          <article
+            class="group relative flex h-full flex-col overflow-hidden rounded-2xl border border-detail/30 bg-white shadow-lg"
+          >
+            <div class="relative h-60 w-full overflow-hidden">
+              <div
+                class="js-image h-full bg-cover bg-center transition-transform duration-500 group-hover:scale-105"
+                role="img"
+              ></div>
+            </div>
+
+            <div class="flex grow flex-col p-5">
+              <h2
+                class="js-title line-clamp-2 font-heading text-xl font-semibold text-primary"
+              >
+                Article Title
+              </h2>
+
+              <div class="mt-2 flex items-center gap-1.5">
+                <span class="text-sm font-medium text-text"> Published: </span>
+
+                <span class="js-date text-sm font-medium text-detail">
+                  Aug 20, 2026
+                </span>
+              </div>
+
+              <p
+                class="js-content mt-3 line-clamp-3 grow font-sans text-sm leading-relaxed text-text"
+              >
+                Article content goes here.
+              </p>
+
+              <div
+                class="mt-5 grid grid-cols-1 gap-2 border-t border-detail/30 pt-4 sm:grid-cols-3"
+              >
+                <a
+                  class="js-view-btn rounded-lg bg-primary px-4 py-2 text-center text-sm font-semibold text-white transition hover:bg-detail hover:text-text"
+                  href="/articles/article-detail.html"
+                >
+                  View
+                </a>
+
+                <button
+                  type="button"
+                  class="js-edit-btn rounded-lg border-2 border-primary px-4 py-2 text-sm font-semibold text-primary transition hover:bg-primary hover:text-white"
+                >
+                  Edit
+                </button>
+
+                <button
+                  type="button"
+                  class="js-delete-btn rounded-lg bg-red-700 px-4 py-2 text-sm font-semibold text-white transition hover:bg-red-800"
+                >
+                  Delete
+                </button>
+              </div>
+            </div>
+          </article>
+        </template>
+
+        <div
+          id="my-articles-container"
+          class="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3"
+        ></div>
+
+        <div
+          id="no-articles-message"
+          class="hidden rounded-2xl border border-detail/30 bg-white p-8 text-center shadow-sm"
+        >
+          <i class="fa-regular fa-newspaper mb-3 text-4xl text-detail"></i>
+
+          <h2 class="font-heading text-2xl font-bold text-primary">
+            No articles yet
+          </h2>
+
+          <p class="mt-2 text-sm text-text/70">
+            You haven't published any articles yet.
+          </p>
+
+          <a
+            href="/articles/create.html"
+            class="mt-5 inline-flex items-center gap-2 rounded-lg bg-primary px-5 py-2.5 font-semibold text-white transition hover:bg-detail hover:text-text"
+          >
+            <i class="fa-solid fa-plus"></i>
+            Create your first article
+          </a>
+        </div>
+      </div>
+    </main>
+
+    <footer class="bg-secondary p-4 shadow-inner">
+      <div class="container mx-auto space-y-4 text-center">
+        <a href="/index.html">
+          <img
+            src="/assets/dp-logo.png"
+            alt="Student Express logo"
+            class="m-auto h-auto w-28 pb-4 transition-opacity hover:opacity-80"
+          />
+        </a>
+
+        <div
+          class="flex justify-center space-x-6 font-sans text-xs font-medium sm:text-sm"
+        >
+          <a
+            href="/about/index.html"
+            class="text-primary transition-all hover:text-detail hover:underline hover:decoration-detail active:text-detail"
+          >
+            About
+          </a>
+
+          <a
+            href="/terms/index.html"
+            class="text-primary transition-all hover:text-detail hover:underline hover:decoration-detail active:text-detail"
+          >
+            Terms
+          </a>
+
+          <a
+            href="/privacy/index.html"
+            class="text-primary transition-all hover:text-detail hover:underline hover:decoration-detail active:text-detail"
+          >
+            Privacy
+          </a>
+        </div>
+
+        <div class="flex justify-center space-x-5 text-xl text-primary">
+          <a href="https://www.facebook.com" aria-label="Link to Facebook">
+            <i
+              class="fa-brands fa-square-facebook transition-all hover:text-detail"
+            ></i>
+          </a>
+
+          <a href="https://www.instagram.com" aria-label="Link to Instagram">
+            <i
+              class="fa-brands fa-square-instagram transition-all hover:text-detail"
+            ></i>
+          </a>
+
+          <a href="https://www.youtube.com" aria-label="Link to YouTube">
+            <i
+              class="fa-brands fa-square-youtube transition-all hover:text-detail"
+            ></i>
+          </a>
+
+          <a href="https://www.tiktok.com" aria-label="Link to TikTok">
+            <i class="fa-brands fa-tiktok transition-all hover:text-detail"></i>
+          </a>
+
+          <a href="https://x.com" aria-label="Link to X (formerly Twitter)">
+            <i
+              class="fa-brands fa-square-x-twitter transition-all hover:text-detail"
+            ></i>
+          </a>
+        </div>
+
+        <p class="text-sm text-primary">
+          Copyright &copy; StudentExpressLtd 2026
+        </p>
+      </div>
+    </footer>
+  </body>
+</html>
