@@ -37,7 +37,7 @@ export function createSingleArticleHtml(article) {
   const imageEl = clone.querySelector(".js-image");
 
   if (imageEl) {
-    const imageUrl = article.image_url || "/assets/dp-favicon.png";
+    const imageUrl = article.image_url || "/assets/dp-fallback-img.png";
 
     imageEl.style.backgroundImage = `url('${imageUrl}')`;
   }

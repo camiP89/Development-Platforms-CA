@@ -12,7 +12,7 @@ export function renderLatestArticle(article) {
   if (!featuredArticle) return;
 
   if (featuredImage) {
-    const imageUrl = article.image_url || "/assets/dp-favicon.png";
+    const imageUrl = article.image_url || "/assets/dp-fallback-img.png";
 
     featuredImage.style.backgroundImage = `url('${imageUrl}')`;
   }

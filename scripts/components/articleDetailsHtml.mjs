@@ -17,7 +17,7 @@ export function createArticleDetailsHtml(articleData) {
   const imageEl = clone.querySelector(".js-image");
 
   if (imageEl) {
-    const imageUrl = articleData.image_url || "/assets/dp-logo.png";
+    const imageUrl = articleData.image_url || "/assets/dp-fallback-img.png";
 
     imageEl.style.backgroundImage = `url('${imageUrl}')`;
 

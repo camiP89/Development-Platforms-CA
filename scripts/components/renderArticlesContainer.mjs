@@ -1,15 +1,11 @@
 import { fetchAllArticles } from "../api/articlesApi.mjs";
-
 import { showSpinner, hideSpinner } from "./loadingSpinner.mjs";
-
 import {
   loadMoreArticles,
   toggleLoadMore,
   setupLoadMoreButton,
 } from "./loadMoreArticles.mjs";
-
 import { sortArticles, setupSortDropdown } from "./sortArticles.mjs";
-
 import { renderLatestArticle } from "./latestArticle.mjs";
 
 /**
