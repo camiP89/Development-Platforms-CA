@@ -1,4 +1,4 @@
-# # Development Platforms - Student Express
+# Development Platforms - Student Express
 
 A student-focused news platform built with HTML, Tailwind CSS, Vanilla JavaScript, and Supabase.
 
@@ -14,7 +14,7 @@ The application uses Supabase for authentication and database management and dem
 
 ### Authentication
 
-- **Register a new user**
+- **Register a new user with email confirmation**
 - **Log in and log out**
 - **Supabase authentication**
 - **Dynamic navigation based on authentication state**
@@ -69,11 +69,25 @@ npm install
 
 ### Run locally
 
+Start the Tailwind CSS watcher:
+
 npm run dev
+
+Then open the project using a local development server such as the VS Code Live Server extension.
 
 ### Build for production
 
 npm run build
+
+### Supabase configuration
+
+The application connects to Supabase using the Supabase JavaScript client imported through a CDN.
+
+The Supabase project URL and publishable key are configured in:
+
+`scripts/api/supabase.mjs`
+
+No environment variables are used in this project.
 
 ## LINKS
 
@@ -102,6 +116,15 @@ The articles table stores information including:
 The user ID connects each article to the authenticated user who created it.
 
 Supabase authentication is used to manage registration, login, logout, and authenticated user sessions.
+
+### Row Level Security
+
+Row Level Security (RLS) is enabled on the articles table.
+
+- Articles can be viewed publicly.
+- Only authenticated users can create articles.
+- Users can only update or delete articles that they created.
+- Article ownership is checked using the authenticated user's Supabase ID.
 
 ## TESTING
 
