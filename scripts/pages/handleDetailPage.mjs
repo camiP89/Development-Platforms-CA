@@ -1,9 +1,6 @@
 import { fetchSingleArticleById } from "../api/articlesApi.mjs";
-
 import { createArticleDetailsHtml } from "../components/articleDetailsHtml.mjs";
-
 import { showSpinner, hideSpinner } from "../components/loadingSpinner.mjs";
-
 import { createHeader } from "../components/header.mjs";
 
 createHeader();

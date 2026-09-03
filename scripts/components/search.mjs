@@ -1,7 +1,5 @@
 import { fetchAllArticles } from "../api/articlesApi.mjs";
-
 import { createArticlesHtml } from "../components/displayArticles.mjs";
-
 import { showSpinner, hideSpinner } from "../components/loadingSpinner.mjs";
 
 const searchInput = document.getElementById("search-input");

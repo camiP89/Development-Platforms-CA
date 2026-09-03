@@ -1,9 +1,6 @@
 import { SUPABASE } from "../api/supabase.mjs";
-
 import { createHeader } from "../components/header.mjs";
-
 import { renderArticlesContainer } from "../components/renderArticlesContainer.mjs";
-
 import { initSearch } from "../components/search.mjs";
 
 createHeader();
